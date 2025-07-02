@@ -37,7 +37,7 @@ spec:
       containers:
       - name: prometheus
         securityContext:
-          {{- toYaml .Values.nodeStatusBackend.prometheus.securityContext | nindent 12 }}
+          {{- toYaml .Values.nodeStatusBackend.prometheus.securityContext | nindent 10 }}
         image: "{{ .Values.nodeStatusBackend.prometheus.image.repository }}:{{ .Values.nodeStatusBackend.prometheus.image.tag }}"
         imagePullPolicy: {{ .Values.nodeStatusBackend.prometheus.image.pullPolicy }}
         ports:
@@ -55,7 +55,7 @@ spec:
             port: http
             scheme: HTTP
         resources:
-          {{- toYaml .Values.nodeStatusBackend.prometheus.resources | nindent 12 }}
+          {{- toYaml .Values.nodeStatusBackend.prometheus.resources | nindent 10 }}
         volumeMounts:
         - name: config-volume
           mountPath: /etc/prometheus/prometheus.yml
@@ -66,7 +66,7 @@ spec:
         - name: prom-data
           mountPath: /prometheus
         {{- with .Values.nodeStatusBackend.prometheus.volumeMounts }}
-          {{- toYaml . | nindent 12 }}
+          {{- toYaml . | nindent 8 }}
         {{- end }}
       - name: blackbox
         securityContext:
@@ -90,7 +90,7 @@ spec:
           {{- toYaml .Values.nodeStatusBackend.blackbox.resources | nindent 10 }}
         {{- with .Values.nodeStatusBackend.blackbox.volumeMounts }}
         volumeMounts:
-          {{- toYaml . | nindent 10 }}
+          {{- toYaml . | nindent 8 }}
         {{- end }}
       volumes:
       - name: config-volume
@@ -99,7 +99,7 @@ spec:
       - name: prom-data
         emptyDir: {}
       {{- with .Values.nodeStatusBackend.volumes }}
-        {{- toYaml . | nindent 8 }}
+        {{- toYaml . | nindent 6 }}
       {{- end }}
       {{- with .Values.nodeStatusBackend.nodeSelector }}
       nodeSelector:
