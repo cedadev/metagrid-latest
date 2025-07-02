@@ -88,9 +88,9 @@ spec:
             port: http
         resources:
           {{- toYaml .Values.nodeStatusBackend.blackbox.resources | nindent 12 }}
-        {{- if .Values.nodeStatusBackend.blackbox.volumeMounts }}
-        volumeMounts:
-          {{- toYaml .Values.nodeStatusBackend.blackbox.volumeMounts | nindent 10 }}
+        {{- with .Values.nodeStatusBackend.blackbox.volumeMounts }}
+          volumeMounts:
+            {{- toYaml . | nindent 10 }}
         {{- end }}
       volumes:
       - name: config-volume
