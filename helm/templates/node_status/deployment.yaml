@@ -70,7 +70,7 @@ spec:
         {{- end }}
       - name: blackbox
         securityContext:
-          {{- toYaml .Values.nodeStatusBackend.blackbox.securityContext | nindent 8 }}
+          {{- toYaml .Values.nodeStatusBackend.blackbox.securityContext | nindent 12 }}
         image: "{{ .Values.nodeStatusBackend.blackbox.image.repository }}:{{ .Values.nodeStatusBackend.blackbox.image.tag }}"
         imagePullPolicy: {{ .Values.nodeStatusBackend.blackbox.image.pullPolicy }}
         ports:
@@ -90,7 +90,7 @@ spec:
           {{- toYaml .Values.nodeStatusBackend.blackbox.resources | nindent 12 }}
         {{- with .Values.nodeStatusBackend.blackbox.volumeMounts }}
         volumeMounts:
-          {{- toYaml . | nindent 12 }}
+          {{- toYaml . | nindent 10 }}
         {{- end }}
       volumes:
       - name: config-volume
