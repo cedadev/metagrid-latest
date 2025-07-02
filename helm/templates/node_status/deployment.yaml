@@ -87,7 +87,7 @@ spec:
             path: /-/healthy
             port: http
         resources:
-          {{- toYaml .Values.nodeStatusBackend.blackbox.resources | nindent 12 }}
+          {{- toYaml .Values.nodeStatusBackend.blackbox.resources | nindent 10 }}
         {{- with .Values.nodeStatusBackend.blackbox.volumeMounts }}
         volumeMounts:
           {{- toYaml . | nindent 10 }}
