@@ -97,7 +97,7 @@ spec:
       - name: prom-data
         emptyDir: {}
       {{- with .Values.nodeStatusBackend.volumes }}
-        {{- toYaml . | nindent 8 }}
+      {{- toYaml . | nindent 6 }}
       {{- end }}
       {{- with .Values.nodeStatusBackend.nodeSelector }}
       nodeSelector:
