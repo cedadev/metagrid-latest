@@ -63,10 +63,8 @@ spec:
         - name: config-volume
           mountPath: /etc/prometheus/esgf_node_status_targets.yml
           subPath: esgf_node_status_targets.yml
-        - name: prom-data
-          mountPath: /prometheus
         {{- with .Values.nodeStatusBackend.prometheus.volumeMounts }}
-          {{- toYaml . | nindent 12 }}
+        {{- toYaml . | nindent 8 }}
         {{- end }}
       - name: blackbox
         securityContext:
@@ -89,8 +87,8 @@ spec:
         resources:
           {{- toYaml .Values.nodeStatusBackend.blackbox.resources | nindent 12 }}
         {{- with .Values.nodeStatusBackend.blackbox.volumeMounts }}
-          volumeMounts:
-            {{- toYaml . | nindent 10 }}
+        volumeMounts:
+          {{- toYaml . | nindent 10 }}
         {{- end }}
       volumes:
       - name: config-volume
