@@ -19,7 +19,7 @@ RUN yarn build
 CMD [ "yarn", "start" ]
 
 # Build production environment
-FROM registry.ceda.ac.uk/nginx-unprivileged:stable AS prod
+FROM registry.ceda.ac.uk/metagrid/nginx-unprivileged:stable AS prod
 COPY --from=build /app/build /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
